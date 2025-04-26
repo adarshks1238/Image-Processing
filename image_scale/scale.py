@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-image = cv2.imread('godzilla.jpg')
+image = cv2.imread('gtr.jpg')
 if image is None:
     raise ValueError("Image not found or unable to load. Please check the file path.")
 
