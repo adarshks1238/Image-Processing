@@ -11,12 +11,11 @@ if image is None:
 image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 
-scale_factor_1 = 3.0  
+scale_factor_1 = 4.0  
 scale_factor_2 = 1/2.0  
 
 
 height, width = image_rgb.shape[:2]
-print(f"Original Dimensions: {width} x {height}")
 new_height1 = int(height * scale_factor_2)
 new_width1 = int(width * scale_factor_2)
 scaled_image = cv2.resize(image_rgb, (new_width1, new_height1), interpolation=cv2.INTER_AREA)
