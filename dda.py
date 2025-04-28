@@ -23,5 +23,14 @@ def lineDDA(x1, y1, x2, y2):
 def setPixel(x, y):
     print(f"Plotting points ({x:.1f}, {y:.1f})")
 
+print("Enter x and y for 1st point")
+x1 = int(input("X coordinate of 1st point: "))
+y1 = int(input("Y coordinate of 1st point: "))
 
-lineDDA(25, 15, 35, 18)
+print("Enter x and y for 2nd point")
+x2 = int(input("X coordinate of 2nd point: "))
+y2 = int(input("Y coordinate of 2nd point: "))
+
+lineDDA(x1, y1, x2, y2)
+
+  
