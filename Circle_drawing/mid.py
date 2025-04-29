@@ -1,50 +1,31 @@
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plot
 
-def midpointCircle(xc, yc, r):
-    x = 0
-    y = r
-    p = 1 - r
-    points = []
+def plot_circle(xc, yc, x, y):
+    for px, py in [
+        (x + xc, y + yc), (-x + xc, y + yc),
+        (x + xc, -y + yc), (-x + xc, -y + yc),
+        (y + xc, x + yc), (-y + xc, x + yc),
+        (y + xc, -x + yc), (-y + xc, -x + yc)
+    ]:
+        plot.plot(px, py, 'ro')
 
-    def plotCirclePoints(xc, yc, x, y):
-        points.extend([
-            (xc + x, yc + y),
-            (xc - x, yc + y),
-            (xc + x, yc - y),
-            (xc - x, yc - y),
-            (xc + y, yc + x),
-            (xc - y, yc + x),
-            (xc + y, yc - x),
-            (xc - y, yc - x)
-        ])
-
-    plotCirclePoints(xc, yc, x, y)
-
-    while x < y:
+def midpoint_circle(r, xc, yc):
+    x, y = 0, r
+    p = 1 - r 
+    while x <= y:
+        plot_circle(xc, yc, x, y)
         x += 1
         if p < 0:
-            p = p + 2 * x + 1
+            p += 2 * x + 1
         else:
             y -= 1
-            p = p + 2 * (x - y) + 1
-        plotCirclePoints(xc, yc, x, y)
+            p += 2 * x+1 - 2 * y
+    plot.gca().set_aspect('equal')
+    plot.grid(True)
+    plot.title("Midpoint Circle Algorithm")
+    plot.show()
 
-    return points
-
-
-print("Enter center coordinates")
-xc = int(input("X center: "))
-yc = int(input("Y center: "))
 r = int(input("Radius: "))
-
-
-circle_points = midpointCircle(xc, yc, r)
-
-
-x_coords, y_coords = zip(*circle_points)
-plt.figure(figsize=(6,6))
-plt.scatter(x_coords, y_coords, color='green', s=10)
-plt.gca().set_aspect('equal')
-plt.title('Midpoint Circle Drawing')
-plt.grid(True)
-plt.show()
+x = int(input("X coordinate: "))
+y = int(input("Y coordinate: "))
+midpoint_circle(r, x, y)
